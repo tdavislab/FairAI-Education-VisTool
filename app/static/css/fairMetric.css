@@ -1,0 +1,69 @@
+@import url(global.css);
+/*fairness metrics panel*/
+
+.fairMetrics{
+    height: fit-content;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 12.5vw auto auto;
+    width: fit-content;
+    margin: auto;
+}
+
+.fairMetrics .metricTitle{
+    font-family: 'font1';
+}
+
+.fairMetrics .CMContainer{
+    padding: 0px;
+    display: grid;
+    grid-template-columns: 4vw 16vw 2vw 16vw 4vw; /*the train/test width is 14 vw*/
+    grid-template-rows: 1fr;
+}
+
+.fairMetrics .CMContainer .colorMapDiv{
+    margin-right: 1vw;
+}
+
+
+.fairMetrics .formulaContainer{
+    margin-top: 0.5vw;
+    height: 3vw;
+    background-color: #fff;
+    border: 1px dashed #C5CBD0;
+    border-radius: 5px;
+    display: none;
+    grid-template-columns: 4vw var(--traintestWidth) 3vw var(--traintestWidth) 5vw;
+    grid-template-rows: 1fr;
+}
+
+.fairMetrics .metricsContainer{
+    height: fit-content;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 42vw;
+}
+
+.fairMetrics .fairMetricDiv{
+    margin-top: 1vw;
+    width: 20.5vw;    /*18.5*/
+    background-color: white;
+    border: var(--divborder) solid 1px ;  /*#A5A5A5*/
+    border-radius: 2px;
+}
+
+.fairMetrics .formulaText{
+    color: var(--content-text-color);
+    font-size: 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.fairMetrics .fairMetricDiv:hover{
+    opacity: 0.6;
+    cursor: pointer; 
+}

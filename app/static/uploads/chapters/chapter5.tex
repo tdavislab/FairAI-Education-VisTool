@@ -1,0 +1,23 @@
+\section{Formula and Images}
+
+\par In this chapter, we demonstrate examples of inserting mathematical formula and images into the .tex file. 
+
+\subsection{Mathematical Formula}
+
+We leverage the JavaScript library \emph{MathJax} \url{https://www.mathjax.org/} for rendering mathematical expressions, supporting basic \emph{inline} math mode, such as \emph{inline} math mode: $x^2 + y^2 = z^2$, $E=mc^2$;
+and \emph{display} math mode, such as:
+$$\mathbb{P}(R =1 |A = male) = \mathbb{P}(R =1 |A = female)$$ 
+
+$$y = \sum_{i=1}^{n}\alpha_i x_i+\epsilon$$
+
+Please refer to the \emph{MathJax} website for all supported commands.
+
+\subsection{Images}
+To insert an image in the .tex file, please put your images under the folder: "app/static/uploads/images", 
+the following example shows an image and caption associated with it.
+
+\begin{figure}
+    \name{image-example.png}
+    \caption{1. An example of adding an image.}
+\end{figure}
+

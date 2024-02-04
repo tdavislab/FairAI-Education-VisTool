@@ -1,0 +1,44 @@
+\section{Biases in Model Predictions}
+
+\subsection{Dataset Description}
+
+\par We use a sample of the German Credit dataset \footnote{D. Dua and C. Graff. UCI machine learning repository, 2017.} that contains 400 borrowers, 
+to illustare the bias detection, fairness metrics, and bias mitigation in the loan case. Each borrower data point contains a binary label (\emph{response}) 
+and five additional features: 
+
+\begin{enumerate}
+    \item $gender$: Man:$1$, Woman:$0$.
+    \item $employment$: Employed: $1$, Unemployed: $0$.
+    \item $dependents$: Number of dependents.
+    \item $age$ 
+    \item $amount$: Amount requested.
+    \item $response$: Loan was approved $1$ or denied $0$.
+\end{enumerate}
+
+
+\begin{visualComponent}
+    \name{Table}
+\end{visualComponent}
+
+
+\subsection{Component Explanation}
+The following component, denoted as \textbf{C2} in the paper, enables the customization of training and test data. Users can select a subset of features as input variables, the protected attribute to define privileged and unprivileged groups, and specify the ratio for splitting the training and test data. When users click the “Generate Training/Test Data” button, the distribution of training and test data is displayed in the bar chart based on the data splitting.
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{CustomizeData}
+    \end{visualComponent}
+
+    The component \textbf{C3} will appear after clicking the “Generate Training/Test Data” button above. The training and test data in \textbf{C3} is consistent with the output of \textbf{C2}. 
+    Similarly, users click the “Train Model” button to train the logistic regression model, then click the “Evaluate Model” button to generate the predictions for the test data, thus observing the biases by comparing confusion matrices.
+
+    \begin{visualComponent}
+        \name{MLPipeline}
+        \trainData{Original}
+        \model{LR}
+    \end{visualComponent}
+\end{VCSet}
+
+The two components form linked views. Every time users re-generate the training and test data, the visualizations of the generated data in \textbf{C2} and \textbf{C3} are updated automatically. The model in C3 is then re-trained and re-evaluated, and the changes in the predictions are highlighted in C3.
+
+

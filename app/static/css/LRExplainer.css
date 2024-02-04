@@ -1,0 +1,108 @@
+/*the css file for the Logistic Regression explainer*/
+
+/* The Logistic Regression Div*/
+.LRExplainer{
+    aspect-ratio: 16/6;
+    display: grid;
+    grid-template-columns: 3fr 6fr 3fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+/*some common features for the 4 divs*/
+.LRExplainer .divContainer{
+    margin-bottom: 2vw;
+    position: relative;
+}
+/*default border style for the five div*/
+.LRExplainer .divBorder{
+    border-radius: 5px;
+    border: solid 1.3px var(--divborder);   /*1.4*/
+    background-color: white;
+}
+
+.LRExplainer .train{
+    grid-row: 1 /span 1;
+    grid-column: 1 /span 1;
+}
+
+.LRExplainer .test{
+    grid-row: 2 /span 1;
+    grid-column: 1 /span 1;
+}
+
+.LRExplainer .result{
+    grid-row: 2 /span 1;
+    grid-column: 3 /span 1;
+}
+
+.LRExplainer .modelContainer{
+    grid-row: 1 /span 2;
+    grid-column: 2 /span 1;
+    position: relative;
+}
+
+.LRExplainer .modelContainer .model{
+    position: absolute;
+    width: 50%;
+    aspect-ratio: 1.2;
+    margin-bottom: 2vw;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+/* highlight div*/
+.LRExplainer .highlight{
+    stroke: #4384F4;
+}
+/* highlight line*/
+
+
+/*train and evaluate button*/
+.LREButton{
+    position: absolute;
+    border: 0px solid var(--grey);
+    background-color: rgb(0, 0, 0, 0.07);
+    height: 1vw;
+    border-radius: 0.2vw;
+    font-size: 0.75vw;
+    line-height: 1vw;
+    /* color: var(--content-text-color); */
+    color: var(--googledoc);
+    white-space: nowrap;
+    padding: 1px 0.3vw;
+    cursor: default;
+    font-family: 'font1';
+}
+
+/* .LREButton:hover{
+    background-color: rgb(0, 0, 0, 0.2);
+} */
+
+.LREButtonHighlight{
+    background-color: rgb(67, 132, 244, 0.1);
+    color: #4384F4;
+    cursor: pointer;
+}
+.LREButtonHighlight:hover{
+    background-color: rgb(67, 132, 244, 0.2);
+}
+
+
+/*style of nodes inside the model div*/
+.LRExplainer .modelDivNode{
+    stroke: white;
+    stroke-width: 0.5px;
+    /* stroke-dasharray: 2px 2px; */
+    fill-opacity: 0.5;
+    stroke-opacity: 0.5;
+}
+
+/*success or train reminder*/
+.reminder{
+    text-anchor: middle;
+    font-size: 0.7vw;
+    letter-spacing: 0px;
+}

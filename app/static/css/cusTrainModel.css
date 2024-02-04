@@ -1,0 +1,88 @@
+/*style for the elements of the TrainModelCustomization visual components*/
+
+/*the container*/
+.cusTMContrainer{
+    width: 750px;
+    /* height: 500px; */
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    display: grid;
+    grid-template-rows: 40px 80px auto 80px 60px;     /*delete the number of input*/
+    grid-template-columns: 1fr;
+    row-gap: 10px 10px 10px 10px 0px;
+    border: solid 1px var(--grey);
+    border-radius: 3px;
+}
+
+.cusTMContrainer .childDiv{
+    /* padding-left: 10px;
+    padding-top: 10px; */
+    position: relative;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.cusTMContrainer>div:nth-child(1){
+    border-bottom: solid 0.8px var(--grey);
+}
+
+.cusTMContrainer>div:nth-child(2){
+    border-bottom: solid 0.5px var(--grey-2);
+}
+
+.cusTMContrainer>div:nth-child(3){
+    height: auto;
+    border-bottom: solid 0.8px var(--grey);
+}
+.cusTMContrainer>div:nth-child(4){
+    border-bottom: solid 0.8px var(--grey);
+}
+
+.cusTMContrainer .labelClass{
+    font-size: 14px;
+    color:var(--content-text-color);
+    display: block;
+    text-align: center;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    padding-top: 10px;
+}
+
+.cusTMContrainer .featureBtn{
+    margin: 10px 7.5px 5px 7.5px;
+    /* padding: 0 10px; */
+    height: 26px;
+    font-size: 13px;
+    color:var(--content-text-color);
+    /* color: var(--grey-1); */
+    border-radius: 5px;
+    border: solid 1px var(--grey-1);
+    background-color: var(--grey-3);
+}
+
+.cusTMContrainer .submitBtn{
+    /* padding: 0 10px; */
+    width: 80px;
+    height: 30px;   
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 50px;
+    left: 0; 
+    margin: auto 0 auto auto;
+    border-radius: 3px;
+    font-size: 14px;
+    display: block;
+    color: var(--content-text-color);
+    border: solid 1px var(--grey);
+    background-color: var(--blue-2);
+}
+
+.cusTMContrainer .submitBtn:hover{
+    background-color: var(--blue-1);
+}
+

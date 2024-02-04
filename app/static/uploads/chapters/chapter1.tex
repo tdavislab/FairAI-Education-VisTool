@@ -1,0 +1,25 @@
+\section{Logistic Regression}
+
+\subsection{Component Explanation}
+
+\par In our paper, we refer to the component below as \textbf{C1}, which demonstrate how to use the Logistic Regression model to generate predictions. 
+A logistic regression may be used to predict a binary variable (labeled as 0 or 1) via a logistic function. 
+It assigns each data point a probability of being 0-1 and makes a prediction of 1 when the probability is above a threshold (e.g., 0.5).
+
+\begin{visualComponent}
+    \name{LRExplainer}
+\end{visualComponent}
+
+\textbf{Data.} We used a toy dataset consisting of 30 data point in this component. 
+Each data point represents a borrower and contains a feature called the \emph{credit\_score} and a binary label \emph{loan\_decision} that indicates whether the loan application was approved (1) or denied (0). We fit a logistic regression with a predictor variable (\emph{credit\_score}) and a predicted variable (\emph{loan\_decision}). 
+
+\textbf{Visualization.} The interface of \textbf{C1} consists of four panels: training data panel, test data panel, model panel, and prediction panel. Arrows between panels highlight the ML workflow. In each panel, a node represents a data point (a borrower), colored by its loan decision label, approval (1) in orange and denial (0) in blue. \emph{x-axis} represents the input (predictor) variable (\emph{credit\_score}), whereas \emph{y-axis} represents the output (predicted) variable (\emph{loan\_decision}). The model panel depicts the learned relationship between the input and the output, where \emph{x-axis} represents the input variable, and \emph{y-axis} encodes the predicted probabilities of the logistic function. The background is colored by the probabilities. For the panels of training and test data respectively, nodes are placed based on their ground truth label (top row: orange nodes, bottom row: blue nodes). In the prediction panel, nodes are placed based on the model predictions. 
+
+\textbf{Interaction.} To start the training process, users click the “Train Model” button, then the fitted curve of probabilities will be displayed in the model panel. To start the evaluation process, users click the “Evaluate Model” button, then the predicted probabilities and the predicted labels are displayed in the model and prediction panels respectively. 
+Three types of interactions are provided in the training data and test data panels to support modifications of the training/test data: 
+\begin{enumerate}
+    \item dragging a node horizontally will change its input variable value; 
+    \item dragging a node away from a row will delete it;
+    \item dragging a node horizontally will change its input variable value; dragging a node away from a row will delete it;
+\end{enumerate}
+Once the training/test data is modified, users can click on the buttons to re-train/re-evaluate the model. The curve of the previous trained model will be kept in the model panel for comparison.

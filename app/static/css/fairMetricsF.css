@@ -1,0 +1,79 @@
+/*the div for fairness metrics and the accuracy*/
+/*This is a grid layout*/
+@import url(global.css);
+
+.faiMetricsFDiv{
+    display: grid;
+    width: 300px;
+    height: 200px;
+    border: 1px var(--grey-2) solid;
+    border-radius: 5px;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    color: var(--content-text-color);
+}
+
+.faiMetricsFDiv>div{
+    overflow-x: scroll;
+    white-space: nowrap;
+}
+
+/* the div of the title*/
+.faiMetricsFDiv .title{
+    padding-left: 5px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.faiMetricsFDiv .metricTitle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.faiMetricsFDiv .rowText{
+    padding-left: 5px; 
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    font-size: 12px;
+    /* font-weight: 400; */
+}
+
+
+
+.faiMetricsFDiv .rBor{
+    border-right: 1px var(--grey-2) solid;
+}
+
+.faiMetricsFDiv .btmBor{
+    border-bottom: 1px var(--grey-2) solid;
+}
+
+.faiMetricsFDiv .titleBBor{
+    border-bottom: 1px var(--grey-1) solid;
+}
+
+.faiMetricsFDiv .metricsBg{
+    background-color: #f9fafb;
+    /* background-color: var(--blue-3); */
+}
+
+/*the Seperator between the data/model columns and the  metrics/accuracy rows*/
+.faiMetricsFDiv .Seperator{
+    border-right: 1px var(--grey-1) solid;
+}
+
+/*the genaral row has a left border and a bottom */
+.faiMetricsFDiv .row{
+    border-right: 0.5px var(--grey) solid;
+    border-bottom: 0.5px var(--grey) solid;
+}
+
+

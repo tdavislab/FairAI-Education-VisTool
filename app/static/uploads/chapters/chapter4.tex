@@ -1,0 +1,178 @@
+\section{Debiasing Methods}
+
+\par In this chapter, we will demonstrate bias mitigation methods through our components, including three pre‐processing methods, two in-processing methods, and one post-processing methods.
+ 
+\subsection{Fairness Pre-Processing Methods}
+\par Pre-processing methods aim to mitigate the biases in the training data. 
+We present three pre-processing methods in this section. We use component C5 to showcase the pre-processing methods. 
+Additionally, we integrate C5 with C3 and C4 to facilitate a comparison of fairness metric values in the model predictions before and after addressing biases in the training data.
+Examples are shown below. 
+
+\subsubsection{Reweighing}
+Refer to 
+\footnote{F. Kamiran and T. Calders. Data preprocessing techniques for classification without discrimination. Knowledge and information systems, 33(1):1–33, 2012.}
+for a detailed explanation of the \emph{Reweighing} algorithm.
+
+\begin{enumerate}
+    \item Upon clicking the “Reweighing” button, the modified data and the weights (only applicable for Reweighing) applied to each subgroup will be displayed in the right panel.
+    \item Subsequently, C3 will appear, with the debiased training data replacing the original training data. Users can then proceed to re-train and re-evaluate the model to generate new predictions.
+    \item Once the new predictions are generated, C4 will appear, enabling a comparison of fairness metric values on the prediction before and after applying the pre-processing method.
+\end{enumerate}
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{PreProcess}
+        \type{Reweighing}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{MLPipeline}
+        \trainData{Reweighing}
+        \model{LR}
+    \end{visualComponent}
+
+    \begin{visualComponent}
+        \name{FairMetrics}
+        \metrics{SPD, DI, EOD, AOD}
+        \interaction{True}
+        \data{Reweighing}
+    \end{visualComponent}
+\end{VCSet}
+
+
+\subsubsection{Learning Fair Representations}
+
+Refer to 
+\footnote{R. Zemel, Y. Wu, K. Swersky, T. Pitassi, and C. Dwork. Learning fair representations. In International conference on machine learning, pp.325–333, 2013.} 
+for a detailed explanation of the \emph{Learning Fair Representations} algorithm.
+See the \emph{Reweighing} section for the use of the following components.
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{PreProcess}
+        \type{LFR}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{MLPipeline}
+        \trainData{LFR}
+        \model{LR}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{FairMetrics}
+        \metrics{SPD, DI, EOD, AOD}
+        \interaction{False}
+        \data{LFR}
+    \end{visualComponent}
+\end{VCSet}
+
+
+\subsubsection{Optimized Pre-processing}
+Refer to 
+\footnote{F. Calmon, D. Wei, B. Vinzamuri, K. Natesan Ramamurthy, and K. R. Varshney. Optimized pre-processing for discrimination prevention. Advances in neural information processing systems, 30, 2017.} 
+for a detailed explanation of the \emph{optimized pre-processing} algorithm.
+See the \emph{Reweighing} section for the use of the following components.
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{PreProcess}
+        \type{OptimPreproc}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{MLPipeline}
+        \trainData{OptimPreproc}
+        \model{LR}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{FairMetrics}
+        \metrics{SPD, DI, EOD, AOD}
+        \interaction{False}
+        \data{OptimPreproc}
+    \end{visualComponent}
+\end{VCSet}
+
+\subsection{In-processing methods}
+
+In-processing methods use ML models that take fairness into account, typically, by adding a fairness term when optimizing the model. 
+We present two in‐processing methods in this section. 
+We reuse component \textbf{C3} to showcase the in‐processing methods, and we integrate \textbf{C3} with \textbf{C4} to facilitate a comparison of fairness metric values before and after applying in‐processing methods. 
+Examples are shown below.
+
+
+\subsubsection{Prejudice Remover}
+
+Refer to 
+\footnote{T. Kamishima, S. Akaho, H. Asoh, and J. Sakuma. Fairness-aware classifier with prejudice remover regularizer. In Joint European conference on machine learning and knowledge discovery in databases, pp.35–50. Springer, 2012.} 
+for a detailed explanation of the \emph{Prejudice Remover} algorithm.
+
+\begin{enumerate}
+    \item Users can train and evaluate the fairness model to generate predictions.
+    \item \textbf{C4} will appear Subsequently, enabling a comparison of fairness metric values on the prediction before and after applying the in-processing method.
+\end{enumerate}
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{MLPipeline}
+        \trainData{Original}
+        \model{PrejudiceRmv}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{FairMetrics}
+        \metrics{SPD, DI, EOD, AOD}
+        \interaction{False}
+        \data{PrejudiceRmv}
+    \end{visualComponent}
+\end{VCSet}
+
+\subsubsection{Adversarial Debiasing}
+Refer to 
+\footnote{B. H. Zhang, B. Lemoine, and M. Mitchell. Mitigating unwanted biases with adversarial learning. In Proceedings of the 2018 AAAI/ACM Conference on AI, Ethics, and Society, pp. 335–340, 2018.} 
+for a detailed explanation of the \emph{Adversarial Debiasing} algorithm.
+See the \emph{Prejudice Remover} section for the use of the following components.
+
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{MLPipeline}
+        \trainData{Original}
+        \model{Adversarial}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{FairMetrics}
+        \metrics{SPD, DI, EOD, AOD}
+        \interaction{False}
+        \data{Adversarial}
+    \end{visualComponent}
+\end{VCSet}
+
+
+\subsection{Post-processing methods}
+\par Post-processing methods improve the fairness of predictions by directly changing the predicted results, for example, by modifying the decision threshold. 
+In this section we show one post-processing method, \emph{Reject Option Classification}
+\footnote{F. Kamiran, A. Karim, and X. Zhang. Decision theory for discrimination-aware classification. In 2012 IEEE 12th International Conference on Data Mining, pp. 924–929. IEEE, 2012.}
+, through the component \textbf{C6}.
+
+\begin{enumerate}
+    \item Upon clicking the "ROC" button, the ajusted prediction will be displayed in the right panel.
+    \item \textbf{C4} will appear Subsequently, enabling a comparison of fairness metric values on the prediction before and after applying the post-processing method.
+\end{enumerate}
+
+
+\begin{VCSet}
+    \begin{visualComponent}
+        \name{PostProcess}
+        \type{ROC}
+    \end{visualComponent}
+    
+    \begin{visualComponent}
+        \name{FairMetrics}
+        \metrics{SPD, DI, EOD, AOD}
+        \interaction{False}
+        \data{ROC}
+    \end{visualComponent}
+\end{VCSet}

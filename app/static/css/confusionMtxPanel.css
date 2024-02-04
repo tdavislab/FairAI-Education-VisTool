@@ -1,0 +1,115 @@
+@import url(global.css);
+
+#confusionMtxPanelContainer{
+    justify-content: center;
+    align-items: center;
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+#confusionMtxPanel{
+    /* width: 300px;
+    height: 300px; */
+    display: grid;
+    grid-template-rows: 40px 40px auto;
+    grid-template-columns: 150px auto;
+    border-top: solid 1px var(--grey);
+    border-left: solid 1px var(--grey);
+    border-radius: 5px;
+}
+
+#confusionMtxPanel .item:first-child{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    grid-column-end: span 2;
+    grid-row-end: span 1;
+    border-bottom: solid 1px var(--grey);
+    padding: 10px;
+}
+
+#confusionMtxPanel .item:nth-child(2){
+    border-bottom: solid 1px var(--grey);
+    border-right: solid 1px var(--grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#confusionMtxPanel .item:nth-child(3){
+    border-bottom: solid 1px var(--grey);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#confusionMtxPanel .item:nth-child(4){
+    border-right: solid 1px var(--grey);
+}
+
+#confusionMtxPanel .item:nth-child(2)>p, 
+#confusionMtxPanel .item:nth-child(3)>p{
+    display: block;
+    color: var(--content-text-color);
+    font-size: 15px;
+}
+
+#confusionMtxPanel .item:first-child .labelStyle{
+    font-size: 15px;
+    color:var(--content-text-color);
+    font-weight: 500;
+}
+
+#confusionMtxPanel .item:first-child select{
+    border-color: var(--grey);
+    border-radius: 2px;
+    margin-right: 16px;
+    font-size: 14px;
+    color: var(--content-text-color);
+}
+
+/*#confusionMtxPanel .item:nth-child(4)*/
+#PContainer{
+    position: relative;
+}
+
+/*#confusionMtxPanel .item:nth-child(5)*/
+#CFContainer{
+    position: relative;
+}
+
+/*the prediction div inside it*/
+#PContainer .prediction{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.CF{
+    /* position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto; */
+}
+.CF input{
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    text-align: center;
+    background-color: transparent;
+    border: 0px;
+    padding: 0px;
+    cursor: default;
+}
+
+/* .CF input[type=number]::-webkit-inner-spin-button {
+    opacity: 1
+} */
+
+/* .CF input[type=number]:focus-visible{
+    border: 1px red solid;
+    padding: 0px;
+    cursor: default;
+} */
+

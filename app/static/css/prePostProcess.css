@@ -1,0 +1,44 @@
+/*This file handles the div of pre-processing and post processing*/
+@import url(global.css);
+
+/*pre-processing div*/
+.preProcess{
+  display: grid;
+  grid-template-columns: 1fr var(--traintestWidth) 10vw var(--traintestWidth) 1fr;
+  grid-template-rows: 1fr;
+  height: fit-content;
+  align-items: flex-end;
+}
+
+.preProcess .preTrainContainer{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  height: fit-content;
+}
+
+/*at first, there is nothing inside the debiased train div*/
+.preProcess .nullState{
+  border-style: dashed;
+  background: none;
+}
+
+.preProcess .processBtnContainer{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/*post-processing div*/
+.postProcess{
+  display: grid;
+  grid-template-columns: 1fr var(--traintestWidth) 10vw var(--traintestWidth) 1fr;
+  grid-template-rows: 1fr;
+  height: fit-content;
+  align-items: flex-end;
+}
+.postProcess .processBtnContainer{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}

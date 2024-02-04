@@ -1,0 +1,64 @@
+/* global variables used across all css files, such as color*/
+/* --1: darker; -1 lighter*/
+:root{
+    --blue-grey: #44546A;
+    --blue-grey--1: #333F50;
+    --blue-grey--2: #222A35;
+    --blue-grey-1: #8497B0;
+    --blue-grey-2: #ADB9CA;
+    --blue-grey-3: #D6DCE5;
+
+    --grey: #A5A5A5;
+    --grey--1: #7C7C7C;
+    --grey--2: #525252;
+    --grey-1: #C9C9C9;
+    --grey-2: #DBDBDB;
+    --grey-3: #EDEDED;
+
+    --white: #FFFFFF;
+    --white--1: #F2F2F2;
+    --white--2: #D9D9D9;
+    --white--3: #BFBFBF;
+    --white--4: #A6A6A6;
+    --white--5: #7F7F7F;
+
+    --content-text-color: #213547;
+
+    /* --blue: #4372C4; */
+    --blue-0: #5B9BD5;
+    --blue--1: #2F5597;
+    --blue--2: #1F3864;
+    --blue-1: #8397B0;
+    --blue-2: #B3C7E7;
+    --blue-3: #DAE3F2;
+
+    --orange: #ED7D32;
+    --orange--1: #C55A11;
+    --orange--2: #843C0B;
+    --orange-1: #F4B183;
+    --orange-2: #F8CBAD;
+    --orange-3: #FBE5D6;
+
+    --bgColor: #f5f5f5;
+
+    /*global results of the layout*/
+    --legendHei: 1.5vw;   /*heigh of legend*/
+    --traintestWidth: 15vw; /*the width of train/test data panel, and the legend width*/
+    --outputHeight: 25vw; /*the height of the output*/
+    --divborder: #777777; /*div border color dadce0 A5A5A5 8497B0    #dadce0*/   
+    --grey1: #B7B7B7;
+    --grey2: #999999;
+    --grey3: #666666;
+    --grey4: #434343;
+    --googledoc: #5F6367;
+    --googledoc2: #202124;
+    --googledoc3: #777777;
+    --red: #E06666;
+    --blue: #4384F4;
+}
+
+
+@font-face {
+    font-family: 'font1';
+    src: url('../assets/font1.ttf');
+  }

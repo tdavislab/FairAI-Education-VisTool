@@ -1,0 +1,22 @@
+\section{Fairness Metrics}
+
+The following component \textbf{C4} illustrate four fairness metrics 
+\footnote{P. Garg, J. Villasenor, and V. Foggo. Fairness metrics: A comparative analysis. In IEEE International Conference on Big Data (Big Data), pp. 3662–3666. IEEE, 2020.} 
+for quantitively measuring the level of bias in the model prediction: statistical parity difference (SPD) , disparate impact (DI), equal opportunity differences (EOD), and average odds difference (AOD).
+
+\begin{visualComponent}
+    \name{FairMetrics}
+    \metrics{SPD, DI, EOD, AOD}
+    \interaction{True}
+    \data{Original}
+\end{visualComponent}
+
+\begin{boxK}
+    By default, the \textbf{Original} prediction is derived from a logistic regression model. The model is trained and tested using a 68\% split ratio on the available data, incorporating all features.
+\end{boxK}
+
+\par The two confusion matrices display the model predictions, which are consistent with the output panel of \textbf{C3}. 
+The four panels below visualize the fairness metrics calculated from the confusion matrices. For each metric, solid vertical lines indicate its current value and dotted vertical lines represent its fair/baseline value. 
+Values that are biased against the unprivileged group are shown in grey. The distance between the current and the baseline value indicates the bias level of the model predictions. 
+When users click a metric panel, its mathematical formula will be displayed in the middle panel, and the confusion matrices are highlighted accordingly.
+When users modify the values confusion matrices then press the "enter" key, the fairness metrics get updated accordingly.

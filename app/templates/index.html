@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Fairness in AI</title>
+        {% assets "js" %}
+        <script type="text/javascript" src="{{ ASSET_URL }}" defer></script>
+        {% endassets %}
+        {% assets "css" %}
+        <link rel="stylesheet" href="{{ ASSET_URL }}" />
+        {% endassets %}
+        <link href="https://cdn.jsdelivr.net/npm/gridjs/dist/theme/mermaid.min.css" rel="stylesheet" />
+        <script src="https://kit.fontawesome.com/89d02c748f.js" crossorigin="anonymous"></script>
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+        <script src="https://cdn.jsdelivr.net/npm/gridjs/dist/gridjs.umd.js"></script>
+        <script type="text/javascript" id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+        <script>
+            MathJax = {
+                tex: {
+                  inlineMath: [['$', '$'], ['\\(', '\\)']]
+                }
+              };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/latex.js/dist/latex.js"></script>
+    </head>
+    <body style="visibility: hidden;">
+        <div id="containerDiv">
+            <div id="navDiv">
+                Fair Algorithms
+            </div>
+            <div id="sideNavDiv">
+            </div>
+            <div id="contentDiv">
+                <!-- template for Logistic Regression model explainer -->
+                <template id='LRExplainerTP'>
+                    <div class="visualComponentContainer LRExplainer">
+                        <div class="train divBorder divContainer">
+                            <span class="plotTitle">Training Data</span>
+                        </div>
+                        <div class="test divBorder divContainer">
+                            <span class="plotTitle">Test Data</span>
+                        </div>
+                        <div class="result divBorder divContainer">
+                            <span class="plotTitle">Output</span>
+                        </div>
+                        <div class="modelContainer">
+                            <div class="model divBorder">
+                                <span class="plotTitle">Model</span>
+                            </div>
+                            <button class="LREButton trainBtn">Train Model</button>
+                            <buttonc class="LREButton testBtn">Evaluate Model</button>
+                        </div>
+                    </div>
+                </template>
+                
+                <!-- template for input data customization -->
+                <template id="customizationTP">
+                    <div class="visualComponentContainer customization">
+                        <div class="editPanel">
+                            <div class="title">Training / Test Data Customization</div>
+                            <div class="contentBlock features">
+                                <label class="label">Selected features</label>
+                            </div>
+                            <div class="contentBlock protectedAttr">
+                                <label class="label" for="sAttr">Protected Attribute</label>
+                                <select class="custom-select" id="sAttr" name="sAttr">
+                                    <option value="gender">gender</option>
+                                </select>
+                                <span class="groupText"><span style="opacity: 0.6;">&#8226;	Previlaged Group:</span> 
+                                <span class="groupLabel">Male</span> &nbsp;  &nbsp; <span style="opacity: 0.6;">&#8226; Unprevilaged Group:</span> 
+                                <span class="groupLabel">Female</span></span>
+                            </div>
+                            <div class="contentBlock">
+                                <label class="label">Split train and test data: &nbsp;<ratioNum>68%:32%</ratioNum></label>
+                                <input class="rangeBar" type="range" id="ttRatio" name="split"  min = 0 max = 100 value=68>
+                            </div>
+                            <div class="submit">
+                                <button type="button" class="submitBtn">Generate Training / Test Data</button>
+                            </div>
+                        </div>
+                        <div class="inputPanel">
+                            <div class="legendDiv">
+                                <div class="positiveIcon icon"></div><span class="positiveText"></span>
+                                <div class="negativeIcon icon"></div><span class="negativeText"></span>
+                            </div>
+                            <div class="trainDataDiv trainTestDDiv"><span class="plotTitle">Training Data</span></div>
+                            <div class="testDataDiv trainTestDDiv"><span class="plotTitle">Test Data</span></div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- template for Machine Learning Pipeline-->
+                <template id="MLPipelineTP">
+                    <div class="visualComponentContainer MLPipeline">
+                        <div class="inputDiv">
+                            <div class="legendDiv">
+                                <div class="positiveIcon icon"></div><span class="positiveText"></span>
+                                <div class="negativeIcon icon"></div><span class="negativeText"></span>
+                            </div>
+                            <div class="trainDataDiv trainTestDDiv"><span class="plotTitle">Training Data</span></div>
+                            <div class="testDataDiv trainTestDDiv"><span class="plotTitle">Test Data</span></div>
+                        </div>
+                        <div class="modelCTNDiv"> 
+                            <!-- Logistic Regression -->
+                            <div class="modelDiv"><span class="modelName">Adversarial Debiasing</span><span class="plotTitle">Model</span></div>
+                            <button class="LREButton trainBtn">Train Model</button>
+                            <buttonc class="LREButton testBtn">Evaluate Model</button>
+                        </div>
+                        <div class="outputContainer">
+                            <div class="colorMapDiv"></div>
+                            <div class="outputDiv">
+                                <div class="previlageCF"></div>
+                                <div class="unprevilageCF"></div>
+                                <div class="accuracyDiv">Accuracy:&nbsp;<span class="accNum">0.75</span>&nbsp;<span class="accChange"></span></div>
+                                <span class="plotTitle">Prediction</span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+                <!-- template for the fairness metrics -->
+                <template id="fairMetricsTP">
+                    <div class="visualComponentContainer">
+                        <div class="fairMetrics">
+                            <div class="CMContainer">
+                                <div class="colorMapDiv"></div>
+                                <div class="unprevilageCF"></div>
+                                <div></div>
+                                <div class="previlageCF"></div>
+                                <div></div>
+                            </div>
+                            <div class="formulaContainer">
+                                <div></div>
+                                <div class="feFormulaDiv formulaText">266</div>
+                                <div class="minusDiv formulaText">-</div>
+                                <div class="maleFormulaDiv formulaText">34</div>
+                                <div class="equalDiv formulaText" style="justify-content: flex-start;">=35</div>
+                            </div>
+                            <div class="metricsContainer">
+                            </div>
+                        </div>
+                    </div>
+                </template>
+
+                <!-- template for the pre-processing -->
+                <template id="preProcessTP">
+                    <div class="visualComponentContainer preProcess">
+                        <div></div>
+                        <div class="originalTrainContainer">
+                            <div class="legendDiv">
+                                <div class="positiveIcon icon"></div><span class="positiveText"></span>
+                                <div class="negativeIcon icon"></div><span class="negativeText"></span>
+                            </div>
+                            <div class="trainTestDDiv originalTrainDiv"><span class="plotTitle">Training Data</span></div>
+                        </div>
+                        <div class="processBtnContainer">
+                            <button class="LREButton processBtn">Reweighing</button>
+                        </div>
+                        <div class="trainTestDDiv debiasedTrainDiv"><span class="plotTitle">Training Data after Reweighing</span></div>
+                    </div>
+                </template>
+
+                <!-- template for the post-processing -->
+                <template id="postProcessTP">
+                    <div class="visualComponentContainer postProcess">
+                        <div></div>
+                        <div class="outputContainer">
+                            <div class="colorMapDiv"></div>
+                            <div class="outputDiv originalOutputDiv">
+                                <div class="previlageCF"></div>
+                                <div class="unprevilageCF"></div>
+                                <div class="accuracyDiv">Accuracy: <span class="accNum">0.75</span></div>
+                                <span class="plotTitle">Prediction</span>
+                            </div>
+                        </div>
+                        <div class="processBtnContainer">
+                            <button class="LREButton processBtn">ROC</button>
+                        </div>
+                        <div class="outputContainer">
+                            <div class="colorMapDiv"></div>
+                            <div class="outputDiv debiasedOutputDiv">
+                                <div class="previlageCF"></div>
+                                <div class="unprevilageCF"></div>
+                                <div class="accuracyDiv">Accuracy: <span class="accNum">0.75</span>&nbsp;<span class="accChange"></span></div>
+                                <span class="plotTitle">Prediction after Debiasing</span>
+                            </div>
+                        </div>
+                    </div>
+                </template>
+                
+            </div>
+        </div>
+    </body>
+</html>

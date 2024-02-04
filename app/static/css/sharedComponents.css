@@ -1,0 +1,186 @@
+/* This file setting styles for some shared divs
+    1. train and test div
+    2. legend div for train/test data
+*/
+
+@import url(global.css);
+
+/*test and train data divs*/
+.trainTestDDiv{
+    height: auto;
+    width: var(--traintestWidth);
+    border-radius: 5px;
+    border: solid 1px var(--divborder);
+    background-color: white;
+    margin-bottom: 2vw;     /*display title*/
+    position: relative;
+}
+/*title of the train/test data*/
+/* .trainTestDDiv .plotTitle{
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto -1.3vw auto;
+    font-size: 0.9vw;
+    color: var(--blue-grey--1)
+} */
+
+/*legend div*/
+.legendDiv{
+    height: var(--legendHei);
+    width: var(--traintestWidth);
+    display: flex;
+    align-items: center;
+}
+.legendDiv .icon{
+    width: 0.7vw;
+    height: 0.7vw;
+    background-color: #8497B0;
+    margin-left: 1vw;
+    margin-right: 0.3vw;
+}
+/*two rectangulars*/
+.legendDiv .positiveIcon{
+    margin-left: 0;
+    margin-right: 0.3vw;
+}
+.legendDiv .negativeIcon{
+    margin-left: 1vw;
+    margin-right: 0.3vw;
+}
+.legendDiv span{
+    font-size: 0.6vw;
+    color: var(--googledoc2);
+}
+
+
+/*outputContainer = colormapDiv + outputDiv*/
+.outputContainer{
+    height: fit-content;
+    width: var(--traintestWidth);
+    bottom: 0;
+    align-self: flex-end;
+    display: grid;
+    grid-template-rows: var(--legendHei) var(--outputHeight);
+    grid-template-columns: 1fr;
+    margin-bottom: 2vw;     /*display title*/
+}
+/*output div*/
+.outputDiv{
+    height: var(--outputHeight);
+    width: var(--traintestWidth);
+    border-radius: 5px;
+    border: solid 1px var(--divborder);
+    /* background-color: white; */
+    margin-bottom: 2vw;     /*display title*/
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 2vw;
+}
+.outputContainer .colorMapDiv{
+    /* border-bottom: solid 1px #8497B0; */
+    width: var(--traintestWidth);
+    height: var(--legendHei);
+}
+.outputDiv .accuracyDiv{
+    border-top: solid 1px var(--grey-1);
+    display: flex;
+    font-size: 0.8vw;
+    color: var(--googledoc);
+    align-items: center;
+    padding-left: 0.5vw;
+}
+
+.outputDiv .previlageCF{
+    border-bottom: solid 1px var(--grey-1);
+    position: relative;
+} 
+
+.unprevilageCF, .previlageCF{
+    position: relative;
+}
+/*the accuracy number*/
+.outputDiv .accNum{
+    color: var(--blue);
+    font-size: 0.8vw;
+}
+.outputDiv .accChange{
+    color: var(--blue);
+    font-size: 0.6vw;
+    letter-spacing: 0;
+}
+/*different colors for the confuisonMatrix*/
+.CMNumFont{
+    fill: var(--googledoc2);
+}
+.CMTitleFont{
+    fill: var(--googledoc2);
+    font-family: 'font1';
+}
+.CMTitle1Font{
+    fill: var(--googledoc);
+}
+.CMTitle2Font{
+    fill: var(--googledoc);
+}
+.fairMetrics input{
+    position: absolute;
+    font-size: 0.8vw;
+    color: var(--googledoc2);
+    width: 2vw;
+    height: 1.05vw;
+    text-align: center;
+    background-color: transparent;
+    border: 0px var(--divborder) dashed;
+    padding: 0px;
+    cursor: default;
+}
+
+/*default style for the arrow lines in ML pipeline*/
+.arrowLine{
+    stroke: var(--divborder);
+    stroke-width: 1.2px;
+}
+
+.arrowLine-highlight{
+    stroke: var(--blue);
+    stroke-width: 1.5px;
+}
+/* highlight train/test/model div*/
+.div-highlight{
+    border-width: 1.5px !important;
+    border-color: var(--blue) !important;
+}
+
+/*the title for each data div, train/test data div*/
+.plotTitle{
+    display: block;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto -1.35vw auto;
+    font-size: 0.85vw;
+    font-family: 'font1' !important;
+    /* color: var(--googledoc2); */
+    color: var(--googledoc);
+}
+
+/*train/test div style*/
+/*the number of each group*/
+.barNum{
+    font-size: 0.53vw;
+    fill: var(--googledoc);
+}
+
+/* the text used in the plot*/
+/* Male, Female*/
+.ticks{
+    font-size: 0.6vw;
+    fill: var(--googledoc2);
+}
