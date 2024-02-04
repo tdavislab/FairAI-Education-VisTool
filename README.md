@@ -9,7 +9,7 @@ This repository presents a web-based system that is able to integrate text, imag
 For macOS:
 
 ```
-cd AIFairness
+cd FairAI-Education-VisTool
 python3 -m venv .venv
 . .venv/bin/activate
 ```
@@ -17,7 +17,7 @@ python3 -m venv .venv
 For Windows:
 
 ```
-cd AIFairness
+cd FairAI-Education-VisTool
 python -m venv .venv
 .venv\Scripts\activate
 ```
