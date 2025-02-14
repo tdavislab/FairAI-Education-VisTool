@@ -4,6 +4,12 @@ This repository presents a web-based system that is able to integrate text, imag
 
 Paper: [Exploring Visualization for Fairness in AI Education](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=10541664) PacificVIS 2024 
 
+
+## Video
+[![Screenshot of video](./images/interface.png)](https://youtu.be/9sZiUec2BAE)
+
+
+
 ## Installation
 
 1. Create a virtual environment 
